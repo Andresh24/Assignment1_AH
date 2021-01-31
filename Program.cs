@@ -19,7 +19,7 @@ namespace Assignment1_AH
             //Question 2:
             Console.WriteLine("Q2 : Enter the number of terms in the Pell Series:");
             int n2 = Convert.ToInt32(Console.ReadLine());
-            printPellSeries(n2);
+            PrintPellSeries(n2);
             Console.WriteLine();
 
             //Question 3:
@@ -28,7 +28,7 @@ namespace Assignment1_AH
             bool flag = squareSums(n3);
             if (flag)
             {
-                Console.WriteLine("Yes, the number can be expressed as a sum of           squares of 2 integers");
+                Console.WriteLine("Yes, the number can be expressed as a sum of squares of 2 integers");
             }
             else
             {
@@ -78,8 +78,33 @@ namespace Assignment1_AH
         {
             try
             {
-                // write your code here
-            }
+                int j, k = 0;
+
+                for (int i = 1; i <= n; i++)
+                {
+
+
+                    if (i % 2 != 0)
+                    {
+
+                        for (j = k + 1; j < k + i; j++)
+                            Console.Write(j + "*");
+                        Console.WriteLine(j++);
+
+                        k = j;
+                    }
+
+                    else
+                    {
+
+                        k = k + i - 1;
+
+                        for (j = k; j > k - i + 1; j--)
+                            Console.Write(j + "*");
+                        Console.WriteLine(j);
+                    }
+                }
+           }
             catch (Exception)
             {
 
@@ -100,11 +125,18 @@ namespace Assignment1_AH
         ///</para>
         /// </summary>
         /// <param name="n2"></param>
-        private static void printPellSeries(int n2)
+        private static void PrintPellSeries(int n2)
         {
             try
             {
-                // write your code here.
+                int p1 = 0, p2 = 1, p;
+                for (int i = 0; i < n2; i++)
+                {
+                    Console.WriteLine(p1);
+                    p = 2 * p2 + p1;
+                    p1 = p2;
+                    p2 = p;
+                }
             }
             catch (Exception)
             {
@@ -113,7 +145,6 @@ namespace Assignment1_AH
             }
 
         }
-
 
         /// <summary>
         ///Given a non-negative integer c, decide whether there're two integers a and b such that a^2 + b^2 = c.
@@ -131,7 +162,21 @@ namespace Assignment1_AH
         {
             try
             {
-                // write your code here\
+                if (n3 == 0)
+                    return true;
+
+                var i = 1;
+
+                while (n3 - (i * i) >= 0)
+                {
+                    // a2= c - b2
+                    var a = n3 - (i * i);
+
+ 
+                    if (Math.Sqrt(a) % 1 == 0)
+                        return true;
+                    i++;
+                }
                 return false;
 
             }
@@ -170,8 +215,37 @@ namespace Assignment1_AH
         {
             try
             {
-                // write your code here.
-                return 0;
+                if (nums != null && nums.Length > 1)
+                {
+                    Array.Sort(nums);
+                    HashSet<(int, int)> combo = new HashSet<(int, int)>();
+
+                    for (int i = 0; i < nums.Length - 1; i++)
+                    {
+                        int temporaryIndex = i + 1;
+
+                        while (temporaryIndex < nums.Length)
+                        {
+                            int diff = nums[temporaryIndex] - nums[i];
+
+                            if (diff == k)
+                            {
+                                combo.Add((nums[temporaryIndex], nums[i]));
+                            }
+                            else if (diff > k)
+                            {
+                                break;
+                            }
+                            temporaryIndex++;
+                        }
+                    }
+
+                    return combo.Count;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             catch (Exception e)
             {
@@ -203,8 +277,37 @@ namespace Assignment1_AH
         {
             try
             {
-                // write your code here.
-                return 0;
+
+                int count = 0;
+
+                for (int i = 0; i < emails.Count; i++)
+                {
+
+                    string[] names = emails[i].Split('@');
+
+                    string localNames = names[0];
+
+                    for (int j = 0; j < localNames.Length; j++)
+                    {
+                        if (localNames[j] == '.')
+                        {
+                            localNames = localNames.Replace(@".", string.Empty);
+                            j--;
+                        }
+
+                        if (localNames[j] == '+')
+                        {
+                            localNames = localNames.Substring(0, localNames.IndexOf("+") + 0);
+                        }
+                    }
+
+                    emails[i] = localNames + "@" + names[1];
+
+                }
+
+                count = emails.Distinct().Count();
+
+                return count;
             }
             catch (Exception e)
             {
@@ -236,9 +339,29 @@ namespace Assignment1_AH
         {
             try
             {
-                // write your code here.
-                return "";
 
+                var dictnew = new Dictionary<string, string>();
+                for (int i = 0; i < paths.GetLength(0); i++)
+                {
+                    dictnew.Add(paths[i,0], paths[i,1]);
+                }
+
+                string finalDesti = null;
+                string destination = paths[0,1];
+                while (destination != null)
+                {
+                    if (dictnew.ContainsKey(destination))
+                    {
+                        destination = dictnew[destination];
+                    }
+                    else
+                    {
+                        finalDesti = destination;
+                        destination = null;
+                    }
+                }
+
+                return finalDesti;
 
             }
             catch (Exception)
