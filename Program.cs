@@ -112,6 +112,8 @@ namespace Assignment1_AH
             }
 
         }
+        // I took around 4 hours to solve this question. I am new to coding specially in c# so I have been spending time reviewing and learning the commands. What I learn from this question is the use of loop. My recommendation for odd number row, values are displayed in increasing order while the even number row are displayed in decreasing order and then using loops.
+        
 
         /// <summary>
         ///<para>
@@ -145,6 +147,7 @@ namespace Assignment1_AH
             }
 
         }
+        // I took around 2 hours to solve this question. In order to solve this question I used iterative, which is also a loop. My recommendation is basically, to do iteration statement that will perform operation a set number of times until the user tell it to stop, with a true or false value. In this case I am using a For statement since its easier for me to construct and to read what is going on.
 
         /// <summary>
         ///Given a non-negative integer c, decide whether there're two integers a and b such that a^2 + b^2 = c.
@@ -186,6 +189,7 @@ namespace Assignment1_AH
                 throw;
             }
         }
+        // I took around 6 hours to solve this question. What I learn from this question is to use the Sqrt function. I used the sqrt function and check if the formula turns out to be an integer. I recommend trying different ways, the Sqrt function is an approach, but there is also Brute Force.
 
         /// <summary>
         /// Given an array of integers and an integer n, you need to find the number of unique
@@ -255,6 +259,7 @@ namespace Assignment1_AH
             }
 
         }
+        // It took me around 10 hours to research and understand this question. I learned how to use hashing and sorting arrays while using list and loops with no dictionary. 
 
         /// <summary>
         /// An Email has two parts, local name and domain name. 
@@ -316,6 +321,7 @@ namespace Assignment1_AH
             }
 
         }
+        // It took me around 8 hours to complete this question. I learned about strings. I also declared the number of the array of same size of the emails. I also the local and domain are according to the desired format. to check if its unique, it is transverse into all the arrays.
 
         /// <summary>
         /// You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
@@ -376,3 +382,4 @@ namespace Assignment1_AH
 
     }
 }
+// This question took me around 12 hours. We were given the array paths, which tells us that there exists a path going from CityA to CityB. The return destination city, is the city without any path otgoing to another city. I also learned how to use Dictionary, which is an assoaicative array. Meaning a collection of unique keys and a collection of different values, where each key is associated with one value.
